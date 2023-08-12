@@ -47,3 +47,36 @@ You will need a RISC-V "newlib" tool chain from
 https://github.com/riscv/riscv-gnu-toolchain, and qemu compiled for
 riscv64-softmmu.  Once they are installed, and in your shell
 search path, you can run "make qemu".
+
+
+Done
+-> compile, run & debug kernal code.
+-> compile instructions
+    https://pdos.csail.mit.edu/6.828/2022/tools.html 
+-> run 
+    make qemu
+    exit xv6 os : CTRL + a,x
+
+-> debug run kernal
+    Terminal 1 : make qemu-gdb  
+        this command will start waiting on a command and ask to attache yourself to a gdb session
+    Terminal 2 : gdb-multiarch kernel/kernel {this will be a remote debug session}
+    1. continue : will continue the os forward
+    2. add a break point into one of the system calls to check if call enters there (exec is good option)
+    3. run some user command (ls,cat...) in Terminal 1 
+        break point will hit 
+    4 use tui enable or l to see the code
+
+-> Debug Init of kernal
+    Above Steps can be used to debug kernal initialization code {kernel/main.c} with one small change
+    After attaching the gdb session add a breakpoint in main.c
+        b main
+    and then continue
+
+    
+
+
+To Do
+-> debug user command code.
+
+
